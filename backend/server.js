@@ -17,9 +17,10 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "client", "build")))
 
 //parses the mongodb
-const uri = process.env.ATLAS_URI;
+const uri = process.env.ATLAS_URI || 'mongodb://localhost:3000';
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
-);
+)
+.catch(error => console.error(error));
 const connection = mongoose.connection;
 connection.once('open', () => {
   console.log("MongoDB database connection established successfully");
