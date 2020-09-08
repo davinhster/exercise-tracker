@@ -25,7 +25,7 @@ export default class CreateExercise extends Component {
     }
   }
 
-  componentWillMount()  {
+  componentDidMount()  {
     axios.get('https://vinhserver.herokuapp.com/users/')
     .then(response => {
       if (response.data.length > 0) {
