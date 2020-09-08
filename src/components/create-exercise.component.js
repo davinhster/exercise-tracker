@@ -25,13 +25,8 @@ export default class CreateExercise extends Component {
     }
   }
 
-<<<<<<< HEAD
-  componentWillMount()  {
-    axios.get('https://vinhserver.herokuapp.com/users/')
-=======
   componentDidMount()  {
     axios.get('http://localhost:5000/users/')
->>>>>>> parent of b7ab260... Changed local to server on heroku
     .then(response => {
       if (response.data.length > 0) {
         this.setState({ 

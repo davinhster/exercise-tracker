@@ -22,13 +22,8 @@ export default class EditExercise extends Component {
     }
   }
 
-<<<<<<< HEAD
-  componentWillMount() {
-    axios.get('https://vinhserver.herokuapp.com/exercises/'+this.props.match.params.id)
-=======
   componentDidMount() {
     axios.get('http://localhost:5000/exercises/'+this.props.match.params.id)
->>>>>>> parent of b7ab260... Changed local to server on heroku
       .then(response => {
         this.setState({
           username: response.data.username,
