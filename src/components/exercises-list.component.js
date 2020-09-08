@@ -25,7 +25,7 @@ export default class ExercisesList extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/exercises/')
+    axios.get('https://vinhserver.herokuapp.com/exercises/')
       .then(response => {
         this.setState({ exercises: response.data})
       })
