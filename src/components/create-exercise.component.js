@@ -73,8 +73,13 @@ export default class CreateExercise extends Component {
     
     console.log(exercise);
     axios.post('https://vinhserver.herokuapp.com/exercises/add', exercise)
-      .then(res => console.log(res.data));
-    window.location = '/';
+      .then(res => console.log(res.data))
+      .catch((error) => {
+        if(axios.isCancel(error)) {
+          console.log("post request cancelled");
+        }
+      });
+    // window.location = '/';
 
   }
 
