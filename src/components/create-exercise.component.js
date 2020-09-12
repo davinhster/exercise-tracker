@@ -21,7 +21,8 @@ export default class CreateExercise extends Component {
       description: '',
       duration: 0,
       date: new Date(),
-      users: []
+      users: [],
+      isResolved: false
     }
   }
 
@@ -73,7 +74,13 @@ export default class CreateExercise extends Component {
     
     console.log(exercise);
     axios.post('https://vinhserver.herokuapp.com/exercises/add', exercise)
-      .then(res => console.log(res.data))
+      .then(res => {
+        console.log(res.data);
+        this.setState({isResolved: true});
+        if(this.state.isResolved){
+          window.location = '/';
+        }
+      })
       .catch((error) => {
         if(axios.isCancel(error)) {
           console.log("post request cancelled");

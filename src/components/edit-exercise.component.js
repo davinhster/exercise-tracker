@@ -18,7 +18,8 @@ export default class EditExercise extends Component {
       description: '',
       duration: 0,
       date: new Date(),
-      users: []
+      users: [],
+      isResolved: false
     }
   }
 
@@ -82,7 +83,13 @@ export default class EditExercise extends Component {
     console.log(exercise);
 
     axios.post('https://vinhserver.herokuapp.com/exercises/update/'+this.props.match.params.id, exercise)
-      .then(res => console.log(res.data));
+      .then(res => {
+        console.log(res.data);
+        this.setState({isResolved: true});
+        if(this.state.isResolved){
+          window.location = '/';
+        }
+      });
     
     // window.location = '/';
   }
